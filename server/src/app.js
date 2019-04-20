@@ -9,11 +9,11 @@ app.use(morgan('combined'));
 app.use(cors())
 app.use(bodyParser.json());
 
-app.get('/status', function(req, res){
+app.post('/register', (req, res) => {
 // eslint-disable-next-line no-console
-    console.log('status request');
+    console.log(req.body.email);
     res.send({
-        message: 'status' });
+        message: `Hello ${req.body.email}! user was registered congrats..enjoy` });
 });
 
 app.listen(process.env.PORT || 8081);
