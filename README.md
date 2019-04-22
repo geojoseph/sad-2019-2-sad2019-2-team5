@@ -8,13 +8,13 @@ Geo Joseph,Sreehari Mullapulli,Khusal,Praveen Tinku
 This application enables the users to have a glimpse of certificates that owned by him .
 
 ## Feautures of the application:-
-Single Page Application and Responsive
-Secure Login/Logout
-Reset Password option is available
-View the details of certificates
-Search for the certificates
+-Single Page Application and Responsive
+-Secure Login/Logout
+-Reset Password option is available
+-View the details of certificates
+-Search for the certificates
 
 ## Technology Used :-
-Vue.js as framework and front-end
-Node.js for the back-end
-Mysql for the database management
+-Vue.js as framework and front-end
+-Node.js for the back-end
+-Mysql for the database management
