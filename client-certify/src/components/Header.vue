@@ -1,14 +1,40 @@
 <template>
 <v-toolbar fixed dark color="primary">
-<v-toolbar-title class="white--text">Certify</v-toolbar-title>
+<v-toolbar-title class="white--text">
+  <span
+  class="home"
+  @click="navigateTo({name: 'root'})">
+    Certify
+  </span>
+</v-toolbar-title>
+<!-- TODO : Impliment Me -->
+<!-- <v-toolbar-items>
+<v-btn flat dark>
+    Browse
+</v-btn>
+</v-toolbar-items>-->
+    <v-spacer></v-spacer>
+    <v-toolbar-items>
+     <v-btn flat dark
+        @click="navigateTo({name: 'register'})">
+         Sign Up
+     </v-btn>
+    </v-toolbar-items>
 </v-toolbar>
 </template>
 
 <script>
 export default {
-
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
+    }
+  }
 }
 </script>
 
 <style scoped>
+.home {
+    cursor: pointer;
+}
 </style>
