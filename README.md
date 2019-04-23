@@ -4,8 +4,8 @@ sad-2019-2-sad2019-2-team5 created by GitHub Classroom
 Team :
 Geo Joseph,Sreehari Mullapulli,Khusal,Praveen Tinku
 
-# SrhCertChain :-
-This application enables the users to have a glimpse of certificates that owned by him .
+# Certify :-
+This application enables the users a centralized place to store, share and get verified from our website .
 
 ## Feautures of the application:-
 - Single Page Application and Responsive
