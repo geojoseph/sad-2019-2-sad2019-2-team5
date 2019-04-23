@@ -2,7 +2,7 @@
 sad-2019-2-sad2019-2-team5 created by GitHub Classroom
 
 Team :
-Geo Joseph,Sreehari Mullapulli,Khusal,Praveen Tinku
+Geo Joseph, Kushal Pulluri,Praveen Kumar Appari, Sreehari Mullapulli
 
 # Certify :-
 This application enables the users a centralized place to store, share and get verified from our website .
