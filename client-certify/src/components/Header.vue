@@ -15,6 +15,12 @@
 </v-toolbar-items>-->
     <v-spacer></v-spacer>
     <v-toolbar-items>
+
+     <v-btn flat dark
+        @click="navigateTo({name: 'login'})">
+         Login
+     </v-btn>
+
      <v-btn flat dark
         @click="navigateTo({name: 'register'})">
          Sign Up
@@ -36,5 +42,8 @@ export default {
 <style scoped>
 .home {
     cursor: pointer;
+}
+.home:hover{
+    color:rgb(9, 235, 28)
 }
 </style>
