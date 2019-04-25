@@ -10,5 +10,8 @@ module.exports = {
             storage: './sad-2019-2-sad2019-2-team5.sqlite'
 
         }
+    },
+    authentication: {
+        jwtSecret: process.env.JWT_SECRET || 'secret'
     }
 }
