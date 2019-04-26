@@ -21,7 +21,7 @@ module.exports = {
      }
         },
 
-async   login (req, res) {
+async login (req, res) {
     try {
         const {email, password} = req.body
         const user = await User.findOne({
@@ -36,8 +36,8 @@ async   login (req, res) {
             })
         }
 
-        const isPasswordValid = password === user.password
-        if(!isPasswordValid){
+        const isPasswordValid = await user.comparePassword(password)
+        if(!isPasswordValid) {
             return res.status(403).send({
                 error: 'The login information was incorrect.'
             })
