@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 
 require('./routes')(app)
 
-sequelize.sync({force: true})
+sequelize.sync()
 .then (() => {
     app.listen(config.port)
     // eslint-disable-next-line no-console
