@@ -10,9 +10,23 @@
                 <v-spacer></v-spacer>
               </v-toolbar>
               <v-card-text>
-                <v-form>
-                  <v-text-field name="email" label="Email" v-model="email" type="email"></v-text-field>
-                  <v-text-field id="password" name="password" label="Password" v-model="password" type="password"></v-text-field>
+                <v-form
+                name="certify-reg-form"
+                autocomplete="off">
+                  <v-text-field
+                  name="email"
+                  label="Email"
+                  v-model="email"
+                  type="email">
+                  </v-text-field>
+                  <v-text-field
+                   id="password"
+                   name="password"
+                   label="Password"
+                   v-model="password"
+                   autocomplete="new-password"
+                   type="password">
+                  </v-text-field>
                 </v-form>
               </v-card-text>
               <v-card-actions>

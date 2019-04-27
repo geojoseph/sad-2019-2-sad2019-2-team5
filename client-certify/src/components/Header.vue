@@ -7,6 +7,11 @@
     Certify
   </span>
 </v-toolbar-title>
+        <v-text-field
+          hide-details
+          prepend-icon="Search"
+          single-line
+        ></v-text-field>
 <!-- TODO : Impliment Me -->
 <!-- <v-toolbar-items>
 <v-btn flat dark>
