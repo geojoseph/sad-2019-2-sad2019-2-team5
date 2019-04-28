@@ -14,6 +14,12 @@
                 name="certify-reg-form"
                 autocomplete="off">
                   <v-text-field
+                  name="name"
+                  label="Name"
+                  v-model="name"
+                  type="name">
+                  </v-text-field>
+                  <v-text-field
                   name="email"
                   label="Email"
                   v-model="email"
@@ -49,6 +55,7 @@ export default {
     return {
       email: '',
       password: '',
+      name: '',
       error: null
     }
   },
@@ -57,7 +64,8 @@ export default {
       try {
         const response = await AuthenticationService.register({
           email: this.email,
-          password: this.password
+          password: this.password,
+          name: this.name
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)

@@ -7,17 +7,20 @@
     Certify
   </span>
 </v-toolbar-title>
-        <v-text-field
-          hide-details
-          prepend-icon="Search"
-          single-line
-        ></v-text-field>
-<!-- TODO : Impliment Me -->
-<!-- <v-toolbar-items>
-<v-btn flat dark>
-    Browse
-</v-btn>
-</v-toolbar-items>-->
+    <v-spacer></v-spacer>
+ <v-toolbar-items>
+          <v-text-field
+           v-if= "$store.state.isUserLoggedIn"
+            label="Browse Certicate"
+            clearable
+            light
+            solo
+            hide-details
+            background-color="white"
+            placeholder=""
+          >
+          </v-text-field>
+</v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>
 
