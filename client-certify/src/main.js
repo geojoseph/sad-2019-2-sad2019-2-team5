@@ -7,9 +7,6 @@ import Vuetify from 'Vuetify'
 import {sync} from 'vuex-router-sync'
 import 'vuetify/dist/vuetify.min.css'
 import store from '@/store/store'
-Vue.use(Vuetify, {
-  iconfont: 'mdi' // 'md' || 'mdi' || 'fa' || 'fa4'
-})
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)
