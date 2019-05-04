@@ -9,17 +9,14 @@
 </v-toolbar-title>
     <v-spacer></v-spacer>
  <v-toolbar-items>
-          <v-text-field
-           v-if= "$store.state.isUserLoggedIn"
-            label="Browse Certicate"
-            clearable
-            light
-            solo
-            hide-details
-            background-color="white"
-            placeholder=""
-          >
-          </v-text-field>
+    <v-btn
+      v-if= "!!$store.state.isUserLoggedIn"
+      flat
+      dark
+      @click= "navigateTo({name: 'dashboard'})"
+      >
+      Dashboard
+    </v-btn>
 </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>

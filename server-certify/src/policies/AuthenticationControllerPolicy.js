@@ -9,9 +9,7 @@ module.exports = {
             ),
             name: Joi.string()
         }
-
         const {error} = Joi.validate(req.body, schema)
-
         if (error) {
             switch (error.details[0].context.key) {
                 case 'email':
