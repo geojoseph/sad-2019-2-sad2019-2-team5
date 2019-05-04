@@ -7,7 +7,7 @@ module.exports = {
             password: Joi.string().regex(
                 new RegExp('^[a-zA-Z0-9]{8,32}$')
             ),
-            firstname: Joi.string()
+            name: Joi.string()
         }
 
         const {error} = Joi.validate(req.body, schema)
@@ -29,7 +29,7 @@ module.exports = {
                     `
                 })
                 break
-                case 'firstname':
+                case 'name':
                 res.status(400).send({
                     error: 'You must provide a valid first name'
                 })
