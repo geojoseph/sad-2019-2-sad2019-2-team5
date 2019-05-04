@@ -2,13 +2,11 @@ module.exports = {
     port : process.env.PORT || 8081,
     db: {
         database: process.env.DB_NAME || 'certify',
-        user: process.env.DB_USER || 'certify',
-        password: process.env.DB_PASS || 'certify',
+        user: process.env.DB_USER || 'root',
+        password: process.env.DB_PASS || 'Aa1Bb2Cc3Dd4#',
         options: {
-            dialect: process.env.DIALECT || 'sqlite',
-            host: process.env.HOST || 'localhost',
-            storage: './sad-2019-2-sad2019-2-team5.sqlite'
-
+            dialect: process.env.DIALECT || 'mysql',
+            host: process.env.HOST || '127.0.0.1'
         }
     },
     authentication: {
