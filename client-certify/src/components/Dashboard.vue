@@ -3,7 +3,7 @@
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
-              <panel title="Browse to Certify">
+              <panel title="My Certificates">
                   <div v-for="certificate in Dashboard"
                     :key="certificate.id">
                     {{certificate.title}}--
