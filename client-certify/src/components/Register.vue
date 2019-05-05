@@ -4,12 +4,7 @@
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
-            <v-card class="elevation-12">
-              <v-toolbar dark color="primary">
-                <v-toolbar-title>Register</v-toolbar-title>
-                <v-spacer></v-spacer>
-              </v-toolbar>
-              <v-card-text>
+            <panel title="Register">
                 <v-form
                 name="certify-reg-form"
                 autocomplete="off">
@@ -34,13 +29,12 @@
                    type="password">
                   </v-text-field>
                 </v-form>
-              </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
                   <div class="error" v-html="error"/>
                   <v-btn color="primary" @click="register">Register</v-btn>
               </v-card-actions>
-            </v-card>
+            </panel>
           </v-flex>
         </v-layout>
       </v-container>
@@ -50,6 +44,8 @@
 
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
+import Panel from '@/components/Panel'
+
 export default {
   data () {
     return {
@@ -75,8 +71,10 @@ export default {
       }
     }
 
+  },
+  components: {
+    Panel
   }
-
 }
 </script>
 <style scoped>

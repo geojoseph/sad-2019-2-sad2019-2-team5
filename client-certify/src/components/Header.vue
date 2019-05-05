@@ -7,26 +7,22 @@
     Certify
   </span>
 </v-toolbar-title>
-    <v-spacer></v-spacer>
  <v-toolbar-items>
-    <v-btn
+     <v-btn
       v-if= "!!$store.state.isUserLoggedIn"
       flat
       dark
-      @click= "navigateTo({name: 'dashboard'})"
-      >
-      Dashboard
-    </v-btn>
+      @click= "navigateTo({name: 'dashboard'})">
+      DASHBOARD
+  </v-btn>
 </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-
      <v-btn
       v-if= "!$store.state.isUserLoggedIn"
       flat
       dark
-      @click= "navigateTo({name: 'login'})"
-      >
+      @click= "navigateTo({name: 'login'})">
       Login
   </v-btn>
   <v-btn
