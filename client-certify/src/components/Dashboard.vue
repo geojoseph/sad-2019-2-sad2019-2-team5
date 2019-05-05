@@ -14,6 +14,17 @@
           </v-flex>
         </v-layout>
       </v-container>
+          <v-btn
+          v-if= "!!$store.state.isUserLoggedIn"
+          @click="navigateTo({name: 'certificate-add'})"
+          dark color="primary"
+          medium
+          right
+          fixed
+          v-tooltip.hover title="Add certificate"
+          fab>
+          <v-icon>add</v-icon>
+          </v-btn>
     </v-content>
 </template>
 
