@@ -3,7 +3,7 @@
     <v-content>
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
-          <v-flex xs12 sm8 md4>
+          <v-flex xs12 sm8 md5  >
             <v-card class="elevation-12">
               <v-toolbar dark color="primary">
                 <v-toolbar-title>Login</v-toolbar-title>
@@ -17,8 +17,11 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                  <div class="error" v-html="error"/>
+                  <div class="danger-alert" v-html="error"/>
                   <v-btn color="primary" @click="login">
+                    <v-icon>
+                      lock_open
+                    </v-icon>
                     Login
                   </v-btn>
               </v-card-actions>

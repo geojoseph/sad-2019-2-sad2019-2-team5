@@ -7,7 +7,6 @@
     Certify
   </span>
 </v-toolbar-title>
-    <v-spacer></v-spacer>
  <v-toolbar-items>
     <v-btn
       v-if= "!!$store.state.isUserLoggedIn"
@@ -27,6 +26,7 @@
       dark
       @click= "navigateTo({name: 'login'})"
       >
+     <v-icon>lock_open</v-icon>
       Login
   </v-btn>
   <v-btn
@@ -35,6 +35,7 @@
       dark
       @click= "navigateTo({name: 'register'})"
       >
+      <v-icon >perm_identity</v-icon>
       Sign Up
       </v-btn>
      <v-btn
@@ -43,6 +44,7 @@
       dark
       @click="logout"
       >
+      <v-icon>exit_to_app</v-icon>
       Log Out
      </v-btn>
     </v-toolbar-items>
