@@ -31,8 +31,13 @@
                 </v-form>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                  <div class="error" v-html="error"/>
-                  <v-btn color="primary" @click="register">Register</v-btn>
+                  <div class="danger-alert" v-html="error"/>
+                  <v-btn color="primary" @click="register">
+                    <v-icon>
+                      perm_identity
+                    </v-icon>
+                    Register
+                  </v-btn>
               </v-card-actions>
             </panel>
           </v-flex>

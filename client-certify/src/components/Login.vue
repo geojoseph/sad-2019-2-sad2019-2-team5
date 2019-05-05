@@ -11,8 +11,11 @@
               </v-form>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                  <div class="error" v-html="error"/>
+                  <div class="danger-alert" v-html="error"/>
                   <v-btn color="primary" @click="login">
+                    <v-icon>
+                      lock_open
+                    </v-icon>
                     Login
                   </v-btn>
               </v-card-actions>

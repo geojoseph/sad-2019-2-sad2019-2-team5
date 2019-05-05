@@ -1,5 +1,5 @@
-<template>
-    <v-content>
+<template >
+    <v-content v-if= "!!$store.state.isUserLoggedIn">
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
