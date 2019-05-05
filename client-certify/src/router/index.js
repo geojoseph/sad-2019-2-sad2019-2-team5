@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Dashboard from '@/components/Dashboard'
+import Addcertificate from '@/components/Addcertificate'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard
+    },
+    {
+      path: '/addcertificate',
+      name: 'addcertificate',
+      component: Addcertificate
     }
   ]
 })

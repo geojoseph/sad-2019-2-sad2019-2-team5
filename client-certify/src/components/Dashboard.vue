@@ -16,7 +16,7 @@
       </v-container>
           <v-btn
           v-if= "!!$store.state.isUserLoggedIn"
-          @click="navigateTo({name: 'certificate-add'})"
+          @click="navigateTo({name: 'addcertificate'})"
           dark color="primary"
           medium
           right
@@ -34,6 +34,11 @@ import Panel from '@/components/Panel'
 export default {
   components: {
     Panel
+  },
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
+    }
   },
   data () {
     return {
