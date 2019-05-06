@@ -47,7 +47,7 @@
       <v-btn flat @click="e6 = 2">Cancel</v-btn>
     </v-stepper-content>
 
-    <v-stepper-step step="4">
+    <v-stepper-step step="4" :complete="e6 > 4" >
       *Validity
       <v-text-field
       label="Expiry date"
@@ -57,32 +57,23 @@
       </v-text-field>
     </v-stepper-step>
     <v-stepper-content step="4">
-      <v-btn color="primary" @click="e6 = 1">Upload</v-btn>
+      <v-btn color="primary" @click="e6 = 5">Continue</v-btn>
       <v-btn flat @click="e6 = 3">Cancel</v-btn>
     </v-stepper-content>
-
-    <v-stepper-step step="5">
-      *Comments
-      <v-text-field
-      label="Additional comments"
-      multi-line
-      v-model="certificate.comment">
-      </v-text-field>
-    </v-stepper-step>
-    <v-stepper-content step="5">
-      <v-btn color="primary" @click="e6 = 1">Upload</v-btn>
-      <v-btn flat @click="e6 = 4">Cancel</v-btn>
-    </v-stepper-content>
-  </v-stepper>
-              </panel>
-          </v-flex>
-        </v-layout>
-      </v-container>
+    </v-stepper>
+    <input type="file" @change="onFileChanged">
+    <v-btn  color="primary" @click="onUpload">Add certificate</v-btn>
+    </panel>
+    </v-flex>
+    </v-layout>
+    </v-container>
     </v-content>
 </template>
 
 <script>
 import Panel from '@/components/Panel'
+import CertificateService from '@/services/CertificatesService'
+import store from '@/store/store'
 
 export default {
   components: {
@@ -91,11 +82,32 @@ export default {
   methods: {
     navigateTo (route) {
       this.$router.push(route)
+    },
+    async onUpload () {
+      try {
+        await CertificateService.post(this.certificate)
+        this.$router.push({
+          name: 'dashbaord'
+        })
+      } catch (err) {
+
+      }
+    },
+    onFileChanged (event) {
+      this.certificate.selectedFile = event.target.files[0]
     }
   },
   data () {
     return {
-
+      certificate: {
+        email: store.state.user.email,
+        name: null,
+        provider: null,
+        grade: null,
+        validity: null,
+        image: null,
+        selectedFile: null
+      },
       e6: 1
     }
   }
@@ -103,5 +115,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
