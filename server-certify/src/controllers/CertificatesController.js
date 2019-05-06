@@ -3,6 +3,7 @@ const {Certificate} = require('../models')
 module.exports = {
     async index (req, res) {
         try {
+            const email = req.body
             const certificates = await Certificate.findAll({
                 where: {
                     email: email
