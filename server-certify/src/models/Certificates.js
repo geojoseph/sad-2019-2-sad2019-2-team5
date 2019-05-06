@@ -1,9 +1,14 @@
 module.exports = (sequelize, DataTypes) => {
- const User = sequelize.define('Certificate', {
-     title: DataTypes.STRING,
-     Cid: DataTypes.STRING,
-     hyperlink: DataTypes.TEXT
+ const Certi = sequelize.define('Certificate', {
+    email: {
+        type: DataTypes.STRING
+    },    
+     name: DataTypes.STRING,
+     provider: DataTypes.STRING,
+     grade: DataTypes.STRING,
+     validity: DataTypes.STRING,
+     selectedFile: DataTypes.BLOB('long')
     })
 
- return User
+ return Certi
 }

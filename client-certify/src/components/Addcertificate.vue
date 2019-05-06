@@ -72,7 +72,7 @@
 
 <script>
 import Panel from '@/components/Panel'
-import CertificateService from '@/services/CertificatesService'
+import CertificatesService from '@/services/CertificatesService'
 import store from '@/store/store'
 
 export default {
@@ -85,16 +85,17 @@ export default {
     },
     async onUpload () {
       try {
-        await CertificateService.post(this.certificate)
+        await CertificatesService.post(this.certificate)
         this.$router.push({
-          name: 'dashbaord'
+          name: 'dashboard'
         })
       } catch (err) {
-
+        console.log(err)
       }
     },
     onFileChanged (event) {
       this.certificate.selectedFile = event.target.files[0]
+      console.log(this.certificate)
     }
   },
   data () {
@@ -105,7 +106,6 @@ export default {
         provider: null,
         grade: null,
         validity: null,
-        image: null,
         selectedFile: null
       },
       e6: 1
