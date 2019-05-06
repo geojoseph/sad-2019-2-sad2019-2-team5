@@ -6,9 +6,8 @@
               <panel title="My Certificates">
                   <div v-for="certificate in Dashboard"
                     :key="certificate.id">
-                    {{certificate.title}}--
-                    {{certificate.Cid}}--
-                    {{certificate.hyperlink}}--
+                    {{certificate.name}}--
+                    {{certificate.provider}}--
                   </div>
               </panel>
           </v-flex>
@@ -31,6 +30,8 @@
 <script>
 import CertificatesService from '@/services/CertificatesService'
 import Panel from '@/components/Panel'
+import store from '@/store/store'
+
 export default {
   components: {
     Panel
@@ -46,7 +47,7 @@ export default {
     }
   },
   async mounted () {
-    this.certificates = (await CertificatesService.index()).data
+    this.certificates = (await CertificatesService.index(store.state.user.email)).data
   }
 }
 </script>

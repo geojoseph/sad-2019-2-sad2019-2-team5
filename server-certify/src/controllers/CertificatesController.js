@@ -4,6 +4,9 @@ module.exports = {
     async index (req, res) {
         try {
             const certificates = await Certificate.findAll({
+                where: {
+                    email: email
+                },
                 limit: 10
             })
           res.send(certificates)
