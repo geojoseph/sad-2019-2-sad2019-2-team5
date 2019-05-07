@@ -3,7 +3,9 @@ const {Certificate} = require('../models')
 module.exports = {
     async index (req, res) {
         try {
-            const email = req.body
+            const {email} = req.body
+            // eslint-disable-next-line no-console
+            console.log(req.body)
             const certificates = await Certificate.findAll({
                 where: {
                     email: email

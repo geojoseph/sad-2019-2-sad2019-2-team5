@@ -31,9 +31,7 @@
 import CertificatesService from '@/services/CertificatesService'
 import Panel from '@/components/Panel'
 import store from '@/store/store'
-const email = store.state.user.email
-// eslint-disable-next-line no-console
-console.log(email)
+
 export default {
   components: {
     Panel
@@ -45,11 +43,14 @@ export default {
   },
   data () {
     return {
-      certificates: null
+      certificate: null
     }
   },
   async mounted () {
-    this.certificates = (await CertificatesService.index(email)).data
+    const email = store.state.user.email
+    // eslint-disable-next-line no-console
+    console.log(email)
+    this.certificate = (await CertificatesService.index({email}))
   }
 }
 </script>
