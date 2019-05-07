@@ -1,28 +1,25 @@
-const {Certificate} = require('../models')
-
+const {Certificates} = require('../models')
+// eslint-disable-next-line no-console
+console.log(Certificates)
 module.exports = {
     async index (req, res) {
         try {
-            const {email} = req.body
-            // eslint-disable-next-line no-console
-            console.log(req.body)
-            const certificates = await Certificate.findAll({
-                where: {
-                    email: email
-                },
+            const certificate = await Certificates.findAll({
                 limit: 10
             })
-          res.send(certificates)
+          res.send(certificate)
         }catch (err) {
+            // eslint-disable-next-line no-console
+            console.log(err)
            res.status(500).send({
-               error: 'An error has occured while trying to fetch the songs.'
+               error: 'An error has occured while trying to fetch the certificates.'
            })
        }
     },    
     async post (req, res) {
         try {
-            const certificates = await Certificate.create(req.body)
-            res.send(certificates)
+            const certificate = await Certificates.create(req.body)
+            res.send(certificate)
         }catch (err) {
            res.status(500).send({
                error: 'An error has occured while trying to create the certificate.'

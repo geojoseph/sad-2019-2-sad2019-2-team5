@@ -2,12 +2,15 @@
     <v-content v-if= "!!$store.state.isUserLoggedIn">
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
-          <v-flex xs12 sm8 md4>
+          <v-flex xs12>
               <panel title="My Certificates">
-                  <div v-for="certificate in Dashboard"
+                  <div v-for="certificate in certificates"
                     :key="certificate.id">
+                    {{certificate.id}}--
                     {{certificate.name}}--
                     {{certificate.provider}}--
+                    {{certificate.grade}}--
+                    {{certificate.validity}}--
                   </div>
               </panel>
           </v-flex>
@@ -30,7 +33,6 @@
 <script>
 import CertificatesService from '@/services/CertificatesService'
 import Panel from '@/components/Panel'
-import store from '@/store/store'
 
 export default {
   components: {
@@ -43,14 +45,12 @@ export default {
   },
   data () {
     return {
-      certificate: null
+      certificates: null
     }
   },
   async mounted () {
-    const email = store.state.user.email
-    // eslint-disable-next-line no-console
-    console.log(email)
-    this.certificate = (await CertificatesService.index({email}))
+    this.certificates = (await CertificatesService.index()).data
+    console.log(this.certificates)
   }
 }
 </script>

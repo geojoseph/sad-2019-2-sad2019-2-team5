@@ -1,8 +1,8 @@
 import Api from '@/services/Api'
 
 export default {
-  index (email) {
-    return Api().get('certificates', email)
+  index () {
+    return Api().get('certificates')
   },
   post (certificate) {
     return Api().post('certificates', certificate)

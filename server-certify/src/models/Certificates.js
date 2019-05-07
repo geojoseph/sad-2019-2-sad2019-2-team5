@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
- const Certi = sequelize.define('Certificate', {
+ const Certificate = sequelize.define('Certificates', {
     email: {
         type: DataTypes.STRING
     },    
@@ -10,5 +10,5 @@ module.exports = (sequelize, DataTypes) => {
      selectedFile: DataTypes.BLOB('long')
     })
 
- return Certi
+ return Certificate
 }
