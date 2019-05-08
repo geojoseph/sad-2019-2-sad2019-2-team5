@@ -2,7 +2,7 @@
     <v-content v-if= "!!$store.state.isUserLoggedIn">
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
-          <v-flex xs9>
+          <v-flex xs12>
               <panel title="Certificates">
   <div>
     <v-toolbar flat color="white">
@@ -49,18 +49,55 @@
         </v-card>
       </v-dialog>
     </v-toolbar>
-    <v-data-table
-      :headers="headers"
-      :items="certificates"
-      class="elevation-1"
-    >
-      <template v-slot:items="props">
+    
+      <v-data-table
+    v-model="selected"
+    :headers="headers"
+    :items="certificates"
+    :pagination.sync="pagination"
+    select-all
+    item-key="name"
+    class="elevation-1"
+  >
+    <template left v-slot:headers="props">
+      <tr>
+        <th>
+          <v-checkbox
+            :input-value="props.all"
+            :indeterminate="props.indeterminate"
+            primary
+            hide-details
+            @click.stop="toggleAll"
+          ></v-checkbox>
+        </th>
+        <th
+          v-for="header in props.headers"
+          :key="header.text"
+          :class="['column sortable', pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'active' : '']"
+          @click="changeSort(header.value)"
+        >
+          <v-icon small>arrow_upward</v-icon>
+          {{ header.text }}
+        </th>
+      </tr>
+    </template>
+    <template v-slot:items="props">
+      <tr :active="props.selected" @click="props.selected = !props.selected">
+        <td>
+          <v-checkbox
+          
+            :input-value="props.selected"
+            primary
+            hide-details
+          ></v-checkbox>
+        </td>
         <td class="text-xs-left">{{ props.item.name }}</td>
-        <td class="text-xs-left">{{ props.item.provider }}</td>
         <td class="text-xs-left">{{ props.item.grade }}</td>
+        <td class="text-xs-left">{{ props.item.provider }}</td>
         <td class="text-xs-left">{{ props.item.validity }}</td>
         <td class="justify-center layout px-0">
-          <v-icon
+        </td>
+        <v-icon
             small
             class="mr-2"
             @click="editItem(props.item)"
@@ -73,7 +110,7 @@
           >
             delete
           </v-icon>
-        </td>
+      </tr>
       </template>
       <template v-slot:no-data>
         <v-btn color="primary" @click="initialize">Reset</v-btn>
