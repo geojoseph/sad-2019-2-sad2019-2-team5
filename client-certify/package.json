@@ -2,7 +2,7 @@
   "name": "client",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "Sreehari Mullapulli <sreehari.sm@gmail.com>",
+  "author": "Praveen kumar Appari",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

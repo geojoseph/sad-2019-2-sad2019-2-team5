@@ -18,6 +18,9 @@
         <div class="text-xs-center text-lg-left">
           <h1 class="font-weight-light mb-4 display-3">"Welcome to Certify App"</h1>
         </div>
+          <div>
+             <img :src="dataUrl">     <!-- image display-->
+          </div>
       </div>
     </div>
     <div class="v-responsive text-xs-center pb-4">
@@ -111,6 +114,16 @@
 
 <script>
 export default {
+  methods:{
+    dataUrl(){
+        return 'data:image/jpeg;base64,' + btoa(
+            new Uint8Array(this.info.selectedFile)
+            .reduce((data, byte) => data + String.fromCharCode(byte), '')
+        );
+    // converting blog format   pp
+}
+  }
+
 }
 </script>
 

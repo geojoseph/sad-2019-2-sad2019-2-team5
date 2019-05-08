@@ -7,6 +7,13 @@
     Certify
   </span>
 </v-toolbar-title>
+ <input
+        name="inputfield"
+          type="search" 
+          class="Search-box"
+          placeholder="Search..."
+          v-model="search"
+          @keyup.enter="getTokens" />
  <v-toolbar-items>
      <v-btn
       v-if= "!!$store.state.isUserLoggedIn"
@@ -50,6 +57,7 @@
 </template>
 
 <script>
+import CertificatesService from '@/services/CertificatesService'
 export default {
   methods: {
     navigateTo (route) {
@@ -61,8 +69,22 @@ export default {
       this.$router.push({
         name: 'root'
       })
+    },
+   getTokens(){
+       try {
+         CertificatesService.post(this.search)
+         this.$router.push({
+          selectedFile: this.search
+        })
+        //console.log(.text)    pp
+        
+       } catch (err) {
+         console.log(err)
+       }
+     
     }
   }
+    
 }
 </script>
 
@@ -73,4 +95,9 @@ export default {
 .home:hover{
     color:rgb(9, 235, 28)
 }
+.Search-box{
+   margin: 5px 10px 5px 0;
+  border: 1px solid #ddd;
+}
+
 </style>
