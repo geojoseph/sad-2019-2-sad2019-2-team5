@@ -55,7 +55,6 @@
         </v-card>
       </v-dialog>
     </v-toolbar>
-    
       <v-data-table
     v-model="selected"
     :headers="headers"
@@ -91,7 +90,6 @@
       <tr :active="props.selected" @click="props.selected = !props.selected">
         <td>
           <v-checkbox
-          
             :input-value="props.selected"
             primary
             hide-details
@@ -116,6 +114,7 @@
           >
             delete
           </v-icon>
+        </td>
       </tr>
       </template>
       <template v-slot:no-data>
