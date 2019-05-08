@@ -10,7 +10,8 @@ module.exports = (app) => {
      AuthenticationController.login)
 
     app.get('/certificates',
-     CertificatesController.index)
+     CertificatesController.get)
     app.post('/certificates',
-     CertificatesController.post)     
+     CertificatesController.post)
+     
 }

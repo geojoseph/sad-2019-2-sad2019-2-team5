@@ -7,7 +7,11 @@ module.exports = (sequelize, DataTypes) => {
      provider: DataTypes.STRING,
      grade: DataTypes.STRING,
      validity: DataTypes.STRING,
-     selectedFile: DataTypes.BLOB('long')
+     selectedFile: DataTypes.BLOB('long'),
+     verification: {
+     type: DataTypes.ENUM,
+     values: ['Verified', 'Pending', 'Not verified']
+     }
     })
 
  return Certificate

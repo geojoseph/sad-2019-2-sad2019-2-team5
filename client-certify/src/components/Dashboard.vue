@@ -15,7 +15,7 @@
       <v-spacer></v-spacer>
       <v-dialog v-model="dialog" max-width="500px">
         <template v-slot:activator="{ on }">
-          <v-btn color="primary" dark class="mb-2" v-on="on">New Item</v-btn>
+          <v-btn color="primary" dark class="mb-2" @click="navigateTo({name: 'addcertificate'})" v-on="on">New Item</v-btn>
         </template>
         <v-card>
           <v-card-title>
@@ -36,6 +36,12 @@
                 </v-flex>
                 <v-flex xs12 sm6 md4>
                   <v-text-field v-model="editedItem.validity" label="Validity"></v-text-field>
+                </v-flex>
+                <v-flex xs12 sm6 md4>
+                  <v-text-field v-model="editedItem.verification" readonly label="Verification status"></v-text-field>
+                </v-flex>
+                <v-flex xs12 sm6 md5>
+                  <input type="file" @change="onFileChanged" props.item>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -59,8 +65,9 @@
         <td class="text-xs-left">{{ props.item.provider }}</td>
         <td class="text-xs-left">{{ props.item.grade }}</td>
         <td class="text-xs-left">{{ props.item.validity }}</td>
+        <td class="text-xs-left">{{ props.item.verification }}</td>
         <td class="justify-center layout px-0">
-          <v-icon
+          <v-icon v-if= "props.item.verification=='Not Verified'"
             small
             class="mr-2"
             @click="editItem(props.item)"
@@ -84,24 +91,14 @@
             </v-flex>
         </v-layout>
       </v-container>
-          <v-btn
-          v-if= "!!$store.state.isUserLoggedIn"
-          @click="navigateTo({name: 'addcertificate'})"
-          dark color="primary"
-          medium
-          middle
-          right
-          fixed
-          v-tooltip.hover title="Add certificate"
-          fab>
-          <v-icon>add</v-icon>
-          </v-btn>
     </v-content>
 </template>
 
 <script>
 import CertificatesService from '@/services/CertificatesService'
 import Panel from '@/components/Panel'
+import Store from '@/store/store'
+const emailid = Store.state.user
 
 export default {
   components: {
@@ -110,6 +107,9 @@ export default {
   methods: {
     navigateTo (route) {
       this.$router.push(route)
+    },
+    onFileChanged (event) {
+      this.item.selectedFile = event.target.files[0]
     },
     editItem (item) {
       this.editedIndex = this.certificates.indexOf(item)
@@ -130,9 +130,14 @@ export default {
       }, 300)
     },
 
-    save () {
+    async save () {
       if (this.editedIndex > -1) {
         Object.assign(this.certificates[this.editedIndex], this.editedItem)
+        try {
+          await CertificatesService.put(this.editItem)
+        } catch (err) {
+          console.log(err)
+        }
       } else {
         this.certificates.push(this.editedItem)
       }
@@ -150,7 +155,9 @@ export default {
       },
       { text: 'Provider', value: 'provider' },
       { text: 'Grade', value: 'grade' },
-      { text: 'Validity', value: 'validity' }
+      { text: 'Validity', value: 'validity' },
+      { text: 'Verification status', value: 'verification' },
+      { text: 'Actions', value: 'name', sortable: false }
     ],
     certificates: [],
     editedIndex: -1,
@@ -158,13 +165,15 @@ export default {
       name: '',
       provider: '',
       grade: 0,
-      validity: 0
+      validity: 0,
+      verification: 'Not Verified'
     },
     defaultItem: {
       name: '',
       provider: '',
       grade: 0,
-      validity: 0
+      validity: 0,
+      verification: 'Not Verified'
     }
   }),
   computed: {
@@ -181,7 +190,7 @@ export default {
     this.initialize()
   },
   async mounted () {
-    this.certificates = (await CertificatesService.index()).data
+    this.certificates = (await CertificatesService.getcertificates(emailid)).data
   }
 }
 </script>

@@ -48,6 +48,7 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        confirm('You are succesfully logged in!!')
         this.$router.push('Dashboard')
       } catch (error) {
         this.error = error.response.data.error

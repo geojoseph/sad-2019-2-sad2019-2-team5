@@ -87,8 +87,16 @@ export default {
       this.$router.push(route)
     },
     async onUpload () {
+      const areAllFieldsFilledIn = Object
+        .keys(this.certificate)
+        .every(key => this.certificate[key])
+      if (!areAllFieldsFilledIn) {
+        this.error = 'please fill all the required fields.'
+        return
+      }
       try {
         await CertificatesService.post(this.certificate)
+        confirm('You have succesfully added certificate!!')
         this.$router.push({
           name: 'dashboard'
         })
@@ -108,8 +116,10 @@ export default {
         provider: null,
         grade: null,
         validity: null,
-        selectedFile: null
+        selectedFile: null,
+        verification: 'Not Verified'
       },
+      error: null,
       required: (value) => !!value || 'Required field',
       e6: 1
     }
