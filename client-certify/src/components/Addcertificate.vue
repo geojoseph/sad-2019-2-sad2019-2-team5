@@ -61,7 +61,10 @@
       <v-btn flat @click="e6 = 3">Cancel</v-btn>
     </v-stepper-content>
     </v-stepper>
-    <input type="file" @change="onFileChanged">
+    <input type="file" @change="onFileChanged" :rules="[required]" required>
+    <div class="danger-alert" v-if="error">
+      {{error}}
+    </div>
     <v-btn  color="primary" @click="onUpload">Add certificate</v-btn>
     </panel>
     </v-flex>
@@ -95,7 +98,6 @@ export default {
     },
     onFileChanged (event) {
       this.certificate.selectedFile = event.target.files[0]
-      console.log(this.certificate)
     }
   },
   data () {
@@ -108,6 +110,7 @@ export default {
         validity: null,
         selectedFile: null
       },
+      required: (value) => !!value || 'Required field',
       e6: 1
     }
   }
