@@ -59,22 +59,10 @@
     v-model="selected"
     :headers="headers"
     :items="certificates"
-    :pagination.sync="pagination"
-    select-all
-    item-key="name"
     class="elevation-1"
   >
-    <template left v-slot:headers="props">
+    <template left v-slot:items="props">
       <tr>
-        <th>
-          <v-checkbox
-            :input-value="props.all"
-            :indeterminate="props.indeterminate"
-            primary
-            hide-details
-            @click.stop="toggleAll"
-          ></v-checkbox>
-        </th>
         <th
           v-for="header in props.headers"
           :key="header.text"
@@ -88,13 +76,6 @@
     </template>
     <template v-slot:items="props">
       <tr :active="props.selected" @click="props.selected = !props.selected">
-        <td>
-          <v-checkbox
-            :input-value="props.selected"
-            primary
-            hide-details
-          ></v-checkbox>
-        </td>
         <td class="text-xs-left">{{ props.item.name }}</td>
         <td class="text-xs-left">{{ props.item.grade }}</td>
         <td class="text-xs-left">{{ props.item.provider }}</td>
