@@ -5,7 +5,7 @@ module.exports = {
     async index (req, res) {
         try {
             const certificate = await Certificates.findAll({
-                limit: 10
+                limit: 50
             })
           res.send(certificate)
         }catch (err) {
