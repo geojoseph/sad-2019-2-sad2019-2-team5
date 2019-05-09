@@ -7,6 +7,16 @@
     Certify
   </span>
 </v-toolbar-title>
+<v-spacer></v-spacer>
+<input
+        name="inputfield"
+          type="search" 
+          class="Search-box"
+          placeholder="Search..."
+          style="display: inline;width: 20%;"
+          v-model="search"
+          @keyup.enter="getTokens" />
+               
  <v-toolbar-items>
      <v-btn
       v-if= "!!$store.state.isUserLoggedIn"
@@ -73,4 +83,11 @@ export default {
 .home:hover{
     color:rgb(9, 235, 28)
 }
+.Search-box{
+   margin: 5px 10px 5px 0;
+  border: 1px solid #ddd;
+  color:rgb(12, 12, 11);
+  background: white;
+}
+
 </style>
