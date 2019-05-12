@@ -21,11 +21,33 @@ This application enables the users a centralized place to store, share and get v
 - Vue.js as framework and front-end
 - Node.js for the back-end
 - Mysql for the database management
--------------------------------------------------------> Updates after presentation
+===============================================================
+#Updates after presentation
+
 -Axios Middleware
 
 
-## How to run the project in docker
+# How to deploy using docker(docker should be installed locally) 
+## spin up a mysql container
+docker run --name mysqldb -e MYSQL_ROOT_PASSWORD="password" -e MYSQL_DATABASE="certify" -d mysql
+
+## Update some settings of mysql
+DOCKER exec -it mysqldb mysql -u root -p
+->type the password when prompted ('password')
+ALTER USER root IDENTIFIED WITH mysql_native_password BY 'password';
+
+## spin up a server container and link to the mysqldb container
+sudo docker run --name server --link mysqldb:mysqldb -p 8081:8081 -d sreeharism/sad-2019-2-sad2019-2-team5-server-certify:1.0.0
+
+## spin up a client container
+sudo docker run --name client -p 8080:8080 -d sreeharism/sad-2019-2-sad2019-2-team5-client-certify:1.0.0
+
+## put http://0.0.0.0:8080 in the browser
+
+=====================================================================
+
+## How to run the project using docker by dockerfile steps( making images locally from dockerfile)
+
 1. Update the contents of config.js file in server-certify folder
    password:'password'
    host: 'mysqldb'
@@ -53,3 +75,7 @@ docker run --name server --link mysqldb:mysqldb -p 8081:8081 -d server-certify
 docker build -t client-certify -f ClientDockerFile .
 
 9. docker run --name client -d client-certify  
+
+
+
+### Acknowledgment: We would like to thank Prof. Christoph Hahn for giving us the freedom to opt for any technology and develop the project that we could relate this in terms of purpose.
