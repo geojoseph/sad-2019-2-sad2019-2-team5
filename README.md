@@ -21,3 +21,31 @@ This application enables the users a centralized place to store, share and get v
 - Vue.js as framework and front-end
 - Node.js for the back-end
 - Mysql for the database management
+-------------------------------------------------------> Updates after presentation
+-Axios Middleware
+
+
+## How to run the project in docker
+1. Update the contents of config.js file in server-certify folder
+   password:'passowrd'
+   host: 'mysqldb'
+   
+2. build server-certify image using the ServerDockerFile
+docker build -t server-certify -f ServerDockerFile .
+
+3. build client image
+docker build -t client -f ClientDockerFile .
+
+4. spin up a mysql container
+docker run --name mysqldb -e MYSQL_ROOT_PASSWORD="password" -e MYSQL_DATABASE="certify" -d mysql
+
+5. Acces the mysqldb and update mysql properties because of some issues 
+docker exec -it mysqldb mysql -u root -p
+
+6. Input password = 'passowrd'
+
+7. Input following command in mysql CMD
+ALTER USER root IDENTIFIED WITH mysql_native_password BY 'password';
+
+8. Make the server container
+docker run --name server --link mysqldb:mysqldb -p 8081:8081 -d server-certify  
