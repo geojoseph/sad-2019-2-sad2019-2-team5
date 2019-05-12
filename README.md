@@ -22,7 +22,8 @@ This application enables the users a centralized place to store, share and get v
 - Node.js for the back-end
 - Mysql for the database management
 ===============================================================
-#Updates after presentation
+
+## Updates after presentation
 
 -Axios Middleware
 
@@ -78,4 +79,4 @@ docker build -t client-certify -f ClientDockerFile .
 
 
 
-### Acknowledgment: We would like to thank Prof. Christoph Hahn for giving us the freedom to opt for any technology and develop the project that we could relate this in terms of purpose.
+# Acknowledgment: We would like to thank Prof. Christoph Hahn for giving us the freedom to opt for any technology and develop the project that we could relate this in terms of purpose.
