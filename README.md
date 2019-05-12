@@ -21,12 +21,14 @@ This application enables the users a centralized place to store, share and get v
 - Vue.js as framework and front-end
 - Node.js for the back-end
 - Mysql for the database management
-===============================================================
+
 
 ## Updates after presentation
 
--Axios Middleware
-
+- Axios Middleware
+- REST API
+- VUEX for state management
+- Docker
 
 # How to deploy using docker(docker should be installed locally) 
 ## spin up a mysql container
