@@ -32,18 +32,18 @@ This application enables the users a centralized place to store, share and get v
 
 # How to deploy using docker(docker should be installed locally) 
 ## spin up a mysql container
-docker run --name mysqldb -e MYSQL_ROOT_PASSWORD="password" -e MYSQL_DATABASE="certify" -d mysql
+- DOCKER run --name mysqldb -e MYSQL_ROOT_PASSWORD="password" -e MYSQL_DATABASE="certify" -d mysql
 
 ## Update some settings of mysql
-DOCKER exec -it mysqldb mysql -u root -p
-->type the password when prompted ('password')
-ALTER USER root IDENTIFIED WITH mysql_native_password BY 'password';
+- DOCKER exec -it mysqldb mysql -u root -p
+- type the password when prompted ('password')
+- ALTER USER root IDENTIFIED WITH mysql_native_password BY 'password';
 
 ## spin up a server container and link to the mysqldb container
-sudo docker run --name server --link mysqldb:mysqldb -p 8081:8081 -d sreeharism/sad-2019-2-sad2019-2-team5-server-certify:1.0.0
+- DOCKER run --name server --link mysqldb:mysqldb -p 8081:8081 -d sreeharism/sad-2019-2-sad2019-2-team5-server-certify:1.0.0
 
 ## spin up a client container
-sudo docker run --name client -p 8080:8080 -d sreeharism/sad-2019-2-sad2019-2-team5-client-certify:1.0.0
+- DOCKER run --name client -p 8080:8080 -d sreeharism/sad-2019-2-sad2019-2-team5-client-certify:1.0.0
 
 ## put http://0.0.0.0:8080 in the browser
 
