@@ -1,0 +1,22 @@
+# pull the latest node image from dockerhub
+FROM node:10.15.3
+
+# copy the contents of the ./server-certify to 
+# /root/server-certify directory inside the container
+COPY ./client-certify /root/client-certify
+
+# set the workdirectory to /root/server-certify
+WORKDIR /root/client-certify
+
+# 
+RUN npm i vuetify --save
+
+# npm install 
+RUN npm install
+
+# port to expose
+EXPOSE 8080
+
+# start the project when container starts
+ENTRYPOINT ["node", "src/main.js"]
+

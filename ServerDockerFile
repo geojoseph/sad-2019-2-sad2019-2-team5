@@ -1,0 +1,17 @@
+#pull node10.15.3 image from dockerhub
+FROM node:10.15.3
+
+#copy server files to container
+COPY ./server-certify /root/server-certify
+
+#change directory to /root/server-certify
+WORKDIR /root/server-certify
+
+#install node dependencies
+RUN npm install
+
+# port to expose
+EXPOSE 8081
+
+# start the project when container starts
+ENTRYPOINT ["node", "src/app.js"]
