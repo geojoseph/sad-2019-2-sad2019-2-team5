@@ -27,7 +27,7 @@ This application enables the users a centralized place to store, share and get v
 
 ## How to run the project in docker
 1. Update the contents of config.js file in server-certify folder
-   password:'passowrd'
+   password:'password'
    host: 'mysqldb'
    
 2. build server-certify image using the ServerDockerFile
@@ -41,11 +41,15 @@ docker run --name mysqldb -e MYSQL_ROOT_PASSWORD="password" -e MYSQL_DATABASE="c
 
 5. Acces the mysqldb and update mysql properties because of some issues 
 docker exec -it mysqldb mysql -u root -p
+type the password when prompted ('password')
 
-6. Input password = 'passowrd'
-
-7. Input following command in mysql CMD
+6. Input following command in mysql CMD
 ALTER USER root IDENTIFIED WITH mysql_native_password BY 'password';
 
-8. Make the server container
+7. Make the server container
 docker run --name server --link mysqldb:mysqldb -p 8081:8081 -d server-certify  
+
+8. build client-certify image using the ClientDockerFile
+docker build -t client-certify -f ClientDockerFile .
+
+9. docker run --name client -d client-certify  
